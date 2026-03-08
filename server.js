@@ -2,7 +2,6 @@ require('dotenv').config();
 const express = require('express');
 // const dotenv = require('dotenv').config();
 const mongoose = require('mongoose');
-const app = express();
 app.use(express.json());
 const User = require('./models/user');
 const Complaint = require('./models/Complaint');
@@ -17,6 +16,8 @@ const complaintController = require("./Controllers/complaintController");
 const authController = require("./middleware/authJWT"); // middleware
 
 
+// start express app
+const app = express();
 
 
 // console.log(process.env.MONGO_URI); DEBUG...

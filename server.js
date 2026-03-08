@@ -14,7 +14,7 @@ app.use(express.static('public'));
 
 const complaintController = require("./Controllers/complaintController");
 const authController = require("./middleware/authJWT"); // middleware
-
+const compression = require('compression'); // to compress daat like html file etc.
 
 // start express app
 const app = express();
@@ -117,8 +117,8 @@ app.post('/login', async (req, res) => {
 
   if (!isMatch) return res.status(400).json({ message: "Wrong password" });
   // DEBUG...
-     console.log("Match Password: ", isMatch);
-       console.log("LOGIN SECRET:", process.env.JWT_SECRET);
+    //  console.log("Match Password: ", isMatch);
+      //  console.log("LOGIN SECRET:", process.env.JWT_SECRET);
 
   const token = jwt.sign(
     { id: user._id, role: user.role, roll: user.roll, fullName: user.fullName }, // payload
@@ -244,7 +244,7 @@ app.get('/staff-complaints', auth, async (req, res) => {
   res.json(complaints);
 });
 
-
+app.use(compression()); // to compress daat like html file etc.
 app.listen(5000, () =>{
     console.log("Server running on port 5000");
 });

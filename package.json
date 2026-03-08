@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^3.0.3",
+    "compression": "^1.8.1",
     "deep-email-validator": "^0.1.21",
     "dotenv": "^17.3.1",
     "express": "^5.2.1",

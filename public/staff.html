@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>Staff Dashboard</h2>
+
+<h3>Assigned Complaints</h3>
+<ul id="complaints"></ul>
+
+<script>
+const token = localStorage.getItem('token');
+
+async function loadComplaints() {
+  const res = await fetch('/staff-complaints', {
+    headers: { 'Authorization': token }
+  });
+
+  const data = await res.json();
+  complaints.innerHTML = "";
+
+  data.forEach(c => {
+    complaints.innerHTML += `
+      <li>
+        <b>${c.category}</b> - ${c.status} <br>
+        Description: ${c.description} <br>
+
+        <select id="status-${c._id}">
+          <option>In Progress</option>
+          <option>Resolved</option>
+        </select>
+        <button onclick="updateStatus('${c._id}')">Update</button>
+
+        <br><br>
+      </li>
+    `;
+  });
+}
+
+async function updateStatus(id) {
+  const status = document.getElementById(`status-${id}`).value;
+
+  await fetch(`/complaint/${id}/status`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    },
+    body: JSON.stringify({ status })
+  });
+
+  loadComplaints();
+}
+
+loadComplaints();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+/* Full height layout */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Navbar */
+.navbar {
+    height: 60px;
+    background: rgb(213, 211, 211);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 70px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border-bottom: 1px solid #c9c5c5;
+}
+
+
+.nav-buttons a {
+    text-decoration: none;
+    margin-left: 20px;
+    padding: 8px 18px;
+}
+.login{
+    color: white;
+    
+}
+.signup {
+    background: #000000;
+    color: white;
+    border-radius: 20px;
+}
+
+/* Hero takes remaining space */
+.hero {
+    flex: 1;              /* fills remaining height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff;
+}
+
+/* Image fills properly */
+.hero img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}

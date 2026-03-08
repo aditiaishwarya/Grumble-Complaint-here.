@@ -1,0 +1,90 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial;
+}
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background: #161616; */
+  /* background: #f4f6f9; */
+  background: linear-gradient(135deg, black,  white);
+
+}
+.container {
+  display: flex;
+  width: 850px;
+  height: 520px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+/* Left Panel */
+.left {
+  width: 40%;
+  /* background: linear-gradient(135deg, #2bbbad, #1e8c84); */
+  background: linear-gradient(135deg, white, black);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  text-align: center;
+}
+.left h1 {
+  margin-bottom: 15px;
+}
+.left p {
+  margin-bottom: 20px;
+}
+.signinBtn {
+  padding: 10px 25px;
+  border: 2px solid white;
+  background: transparent;
+  color: white;
+  border-radius: 25px;
+  cursor: pointer;
+}
+/* Right Panel */
+.right {
+  width: 60%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.right h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+.right input,
+.right select {
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.right button {
+  margin-top: 10px;
+  padding: 12px;
+  background: rgb(19, 181, 19);
+  /* background: #2bbbad; */
+  /* background: #E8FF19; */
+  /* background: #FBFF0AF7; */
+
+  /* color: black; */
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.right button:hover {
+  background:  rgb(27, 164, 27);
+  /* background: #239b90; */
+}

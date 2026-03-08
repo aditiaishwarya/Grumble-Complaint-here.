@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Register</title>
+    <link rel="stylesheet" href="./css/register.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Left Side -->
+      <div class="left">
+        <h1>Welcome!</h1>
+        <p>Already have an account?</p>
+        <a href="login.html"> <button class="signinBtn">SIGN IN</button> </a>
+      </div>
+      <!-- Right Side -->
+      <div class="right">
+        <h2>Create Account</h2>
+        <input id="name" placeholder="Full Name" />
+        <input id="email" placeholder="Email" />
+        <input id="roll" placeholder="Roll Number" />
+        <input id="password" type="password" placeholder="Password" />
+        <input
+          id="passwordConfirm"
+          type="password"
+          placeholder="Confirm Password"
+        />
+        <input id="roomNumber" placeholder="Room Number" />
+        <select id="role">
+          <option value="student">Student</option>
+          <option value="staff">Staff</option>
+          <option value="admin">Admin</option>
+        </select>
+        <button onclick="register()">SIGN UP</button>
+      </div>
+    </div>
+
+    <script>
+      async function register() {
+        const fullName = document.getElementById("name");
+        const emailInput = document.getElementById("email");
+        const rollInput = document.getElementById("roll");
+        const passwordInput = document.getElementById("password");
+        const passwordConfirm = document.getElementById("passwordConfirm");
+        const roomInput = document.getElementById("roomNumber");
+        const roleInput = document.getElementById("role");
+        const res = await fetch("/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            fullName: fullName.value.trim(),
+            email: emailInput.value.trim().toLowerCase(),
+            roll: rollInput.value.trim(),
+            password: passwordInput.value.trim(),
+            passwordConfirm: passwordConfirm.value.trim(),
+            roomNumber: roomInput.value.trim(),
+            role: roleInput.value,
+          }),
+        });
+        const data = await res.json();
+        if (res.status === 201) {
+          alert("Account created successfully!");
+          window.location.href = "login.html";
+        } else {
+          alert(data.message || "Something went wrong");
+        }
+      }
+    </script>
+  </body>
+</html>

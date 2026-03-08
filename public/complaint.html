@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Raise Complaint</title>
+
+<style>
+
+body{
+    font-family: Arial;
+    margin:0;
+    background:#f4f6f9;
+}
+
+/* Page layout */
+
+.container{
+    display:flex;
+    height:100vh;
+}
+
+/* Left section */
+
+.left{
+    width:40%;
+    background:white;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content:center;
+    text-align: center;
+    padding:40px;
+}
+
+.left img{
+    width:80%;
+}
+
+/* Right section */
+
+.right{
+    width:60%;
+    background:#f7f7f7;
+    padding:60px;
+}
+
+.right h2{
+    margin-bottom:20px;
+}
+
+.form-row{
+    display:flex;
+    gap:20px;
+}
+
+input, textarea{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    border:1px solid #ccc;
+    border-radius:6px;
+}
+
+textarea{
+    height:100px;
+}
+
+button{
+    margin-top:20px;
+    padding:12px 20px;
+    /* background:#2196f3; */
+  background: rgb(19, 181, 19);
+    border:none;
+    color:white;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+button:hover{
+    /* background:#1976d2; */
+  background:  rgb(27, 164, 27);
+
+}
+
+/* Complaint list */
+
+.list{
+    margin-top:40px;
+}
+
+li{
+    background:white;
+    padding:10px;
+    margin-bottom:10px;
+    border-radius:5px;
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="container">
+
+<!-- Left Illustration -->
+
+<div class="left" >
+<img src="https://cdn-icons-png.flaticon.com/512/921/921347.png">
+  <h1>For your ease.</h1>
+</div>
+
+
+<!-- Complaint Form -->
+
+<div class="right">
+
+<h2>Raise Complaint</h2>
+
+<input id="category" placeholder="Complaint Category">
+
+<textarea id="description" placeholder="Describe your issue"></textarea>
+
+<button onclick="raiseComplaint()">Submit Complaint</button>
+
+
+<div class="list">
+<h3>My Complaints</h3>
+<ul id="complaints"></ul>
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+const token = localStorage.getItem("token");
+
+async function raiseComplaint(){
+
+    await fetch('/complaint',{
+        method:'POST',
+        headers:{
+            'Content-Type':'application/json',
+            'Authorization':`Bearer ${token}`
+        },
+        body:JSON.stringify({
+            category:category.value,
+            description:description.value
+        })
+    })
+
+    category.value=""
+    description.value=""
+
+    loadComplaints()
+}
+
+
+
+async function loadComplaints(){
+
+    const res = await fetch('/my-complaints',{
+        headers:{
+            'Authorization':`Bearer ${token}`
+        }
+    })
+
+    const data = await res.json()
+
+    complaints.innerHTML=""
+
+    data.forEach(c=>{
+        complaints.innerHTML += `
+        <li>
+            <b>${c.category}</b><br>
+            ${c.description}<br>
+            Status: ${c.status.status}
+        </li>
+        `
+    })
+}
+
+loadComplaints()
+
+</script>
+
+</body>
+</html>

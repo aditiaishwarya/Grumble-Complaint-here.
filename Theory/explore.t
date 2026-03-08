@@ -1,0 +1,1 @@
+// By default, Mongoose only runs validation on .save()

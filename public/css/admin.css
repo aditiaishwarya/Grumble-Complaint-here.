@@ -1,0 +1,82 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f4f6f9;
+}
+
+.dashboard {
+    display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 280px;
+    background: white;
+    padding: 20px;
+    box-shadow: 3px 0 10px rgba(0,0,0,0.05);
+}
+
+.profile-card {
+    text-align: center;
+}
+
+.profile-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.stats-box {
+    background: #f1f3f6;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 10px;
+}
+
+/* Main */
+.main {
+    flex: 1;
+    padding: 30px;
+}
+
+/* Overview Cards */
+.overview {
+    display: flex;
+    gap: 20px;
+}
+
+.stat {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    flex: 1;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+/* Filters */
+.filters {
+    margin: 20px 0;
+    display: flex;
+    gap: 15px;
+}
+
+/* Complaint Card */
+.card {
+    background: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.status {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.pending { background: orange; color: white; }
+.resolved { background: green; color: white; }
+.inprogress { background: blue; color: white; }

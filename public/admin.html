@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+    <!-- LEFT PROFILE PANEL -->
+    <div class="sidebar">
+        <div class="profile-card">
+            <img id="profilePreview" src="default.png" alt="Profile">
+            <input type="file" id="profileUpload" accept="image/*">
+            <h3 id="adminName">Admin Name</h3>
+            <p id="adminEmail">admin@email.com</p>
+        </div>
+
+        <div class="stats-box">
+            <h4>Total Floors</h4>
+            <p id="totalFloors">0</p>
+        </div>
+
+        <div class="stats-box">
+            <h4>Total Complaints</h4>
+            <p id="totalComplaints">0</p>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main">
+
+        <!-- OVERVIEW -->
+        <div class="overview">
+            <div class="stat">
+                <h4>Pending</h4>
+                <p id="pendingCount">0</p>
+            </div>
+
+            <div class="stat">
+                <h4>Resolved</h4>
+                <p id="resolvedCount">0</p>
+            </div>
+
+            <div class="stat">
+                <h4>In Progress</h4>
+                <p id="progressCount">0</p>
+            </div>
+        </div>
+
+        <!-- FILTERS -->
+        <div class="filters">
+            <select id="floorFilter" onchange="applyFilters()">
+                <option value="">All Floors</option>
+            </select>
+
+            <select id="statusFilter" onchange="applyFilters()">
+                <option value="">All Status</option>
+                <option value="Pending">Pending</option>
+                <option value="Resolved">Resolved</option>
+                <option value="In-Progress">In-Progress</option>
+            </select>
+
+            <button onclick="logout()">Logout</button>
+        </div>
+
+        <!-- COMPLAINT LIST -->
+        <div id="complaints"></div>
+
+    </div>
+</div>
+
+<script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>Admin Dashboard</h2>
+
+<h3>All Complaints</h3>
+<ul id="complaints"></ul>
+
+<script>
+const token = localStorage.getItem('token');
+
+// async function loadComplaints() {
+//   const res = await fetch('/all-complaints', {
+//     headers: { 'Authorization': token }
+//   });
+
+//   const data = await res.json();
+//   complaints.innerHTML = "";
+
+//   data.forEach(c => {
+//     complaints.innerHTML += `
+//       <li>
+//         <b>${c.category}</b> - ${c.status} <br>
+//         Student: ${c.student.name} <br>
+        
+//         Assign Staff ID:
+//         <input id="staff-${c._id}" placeholder="Enter Staff ID">
+//         <button onclick="assign('${c._id}')">Assign</button>
+        
+//         <br><br>
+//       </li>
+//     `;
+//   });
+// }
+async function loadComplaints() {
+  const res = await fetch('/all-complaints', {
+    headers: { 'Authorization': token }
+  });
+
+  console.log("Response status:", res.status);
+
+  const data = await res.json();
+  console.log("Data received:", data);
+
+  complaints.innerHTML = "";
+console.log("Token:", token);
+if (!Array.isArray(data)) {
+  console.log("Not an array:", data);
+  return;
+}
+  data.forEach(c => {
+    complaints.innerHTML += `<li>${c.category}</li>`;
+  });
+}
+
+async function assign(id) {
+  const staffId = document.getElementById(`staff-${id}`).value;
+
+  await fetch(`/complaint/${id}/assign`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': token
+    },
+    body: JSON.stringify({ staffId })
+  });
+  console.log("Token:", token);
+
+  loadComplaints();
+}
+
+loadComplaints();
+</script>
+
+</body>
+</html>

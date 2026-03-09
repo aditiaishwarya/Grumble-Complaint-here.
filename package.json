@@ -2,7 +2,7 @@
   "name": "building_api",
   "version": "1.0.0",
   "description": "API: It is a service from which we can re*uest some data.\r IDEA: We are going to build an API that will simply manage the complaints raise by the students of the college.",
-  "main": "hii.js",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"

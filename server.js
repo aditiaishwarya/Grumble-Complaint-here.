@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 // const dotenv = require('dotenv').config();
+const app = express();
 const mongoose = require('mongoose');
 app.use(express.json());
 const User = require('./models/user');
@@ -15,11 +16,6 @@ app.use(express.static('public'));
 const complaintController = require("./Controllers/complaintController");
 const authController = require("./middleware/authJWT"); // middleware
 const compression = require('compression'); // to compress daat like html file etc.
-
-// start express app
-const app = express();
-
-
 // console.log(process.env.MONGO_URI); DEBUG...
 
 // Way_01 good for DEBUG...
@@ -245,7 +241,8 @@ app.get('/staff-complaints', auth, async (req, res) => {
 });
 
 app.use(compression()); // to compress daat like html file etc.
-app.listen(5000, () =>{
+const port = process.env.port || 3000;
+app.listen(port, () =>{
     console.log("Server running on port 5000");
 });
 

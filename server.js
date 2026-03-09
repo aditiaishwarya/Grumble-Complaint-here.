@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 // const dotenv = require('dotenv').config();
+const path = require("path");
 const app = express();
 const mongoose = require('mongoose');
 app.use(express.json());
@@ -31,7 +32,6 @@ app.get('/',(req, res) =>{
     res.send("API is running...");
 });
 //------------------------------
-const path = require("path");
 app.use(express.static(path.join(__dirname, "public")));
 //------------------------------
 // POST request

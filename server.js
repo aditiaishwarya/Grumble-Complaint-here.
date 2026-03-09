@@ -19,10 +19,10 @@ const compression = require('compression'); // to compress daat like html file e
 // console.log(process.env.MONGO_URI); DEBUG...
 
 // Way_01 good for DEBUG...
-if (!process.env.MONGO_URI) {
-  console.log("MONGO_URI is missing");
-  process.exit(1);
-}
+// if (!process.env.MONGO_URI) {
+//   console.log("MONGO_URI is missing");
+//   process.exit(1);
+// }
 // Way_02
 mongoose.connect(process.env.MONGO_URI).then(()=>console.log("MongoDB Connected")).catch(err => console.log(err));
 

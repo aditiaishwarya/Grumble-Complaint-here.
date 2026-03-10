@@ -33,34 +33,7 @@ app.get('/',(req, res) =>{
 });
 //------------------------------
 app.use(express.static(path.join(__dirname, "public")));
-//------------------------------
-// POST request
-// app.post('/register', async (req, res)=>{
-//     try{
-//     const user = new User(req.body);
-//     await user.save();
-//     res.status(201).json({message: "User registere"});
-//     } catch(error){
-//         res.status(500).json({error:error.message});
-//     }
-// });
-//--------------------------------------------------------
-
-// app.post('/register', async (req, res) => {
-//   try {
-//     const hashedPassword = await bcrypt.hash(req.body.password, 10); // Why 10?
-
-//     const user = new User({
-//       ...req.body, // Why ...?
-//       password: hashedPassword
-//     });
-
-//     await user.save();
-//     res.status(201).json({ message: "User registered" });
-//   } catch (error) {
-//     res.status(500).json({ error: error.message });
-//   }
-// });
+//---------------------------
 app.post('/register', async (req, res) => {
     // console.log(req.body); //  DEBUG
 

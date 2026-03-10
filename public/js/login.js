@@ -12,7 +12,7 @@ form.addEventListener("submit", async function (e) {
   }
 
   try {
-    const response = await fetch("http://localhost:5000/login", {
+    const response = await fetch("/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -43,48 +43,3 @@ form.addEventListener("submit", async function (e) {
   }
 });
 
-// REAL LOGIN LOGIC
-/*
-const form = document.getElementById("loginForm");
-
-form.addEventListener("submit", async function (e) {
-  e.preventDefault();
-
-  const email = document.getElementById("email").value;
-  const passwordValue = document.getElementById("password").value;
-
-  if (!email || !passwordValue) {
-    alert("Please fill all fields");
-    return;
-  }
-
-  try {
-    const response = await fetch("http://localhost:5000/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        email: email,
-        password: passwordValue
-      })
-    });
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      alert(data.message); // show error from backend
-      return;
-    }
-
-    // Save token in localStorage
-    localStorage.setItem("token", data.token);
-
-    // Redirect
-    window.location.href = "landing_after_login.html";
-
-  } catch (error) {
-    alert("Server not running or connection error");
-  }
-});
-*/

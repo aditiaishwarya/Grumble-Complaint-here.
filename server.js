@@ -130,7 +130,7 @@ app.post('/login', async (req, res) => {
   res.json({
   token,
   user: {
-    name: user.firstName,
+    name: user.fullName,
     email: user.email
   }
 });
